@@ -1,0 +1,470 @@
+:root {
+    --primary-color: #0077b6;
+    --secondary-color: #0096c7;
+    --accent-color: #48cae4;
+    --dark-bg: #f1f5f9;
+    --white: #ffffff;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --radius: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-dark);
+    /* Agar pas satu layar (One Page View) */
+    height: 100vh; 
+    overflow-y: auto; 
+}
+
+/* --- Navbar --- */
+.navbar {
+    background: linear-gradient(135deg, #023e8a, #0077b6);
+    height: 80px;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--white);
+}
+
+#navbar__logo img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.navbar-text h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.navbar-text p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.navbar__menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.navbar__links {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar__links:hover, .navbar__links.active {
+    background: rgba(255,255,255,0.2);
+    color: var(--white);
+}
+
+/* --- Dashboard Layout (Compact) --- */
+.dashboard-container {
+    max-width: 1400px;
+    /* Margin diperkecil agar naik ke atas */
+    margin: 1rem auto; 
+    padding: 0 1rem;
+    
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Kolom kiri fix, kanan flexible */
+    gap: 1rem; /* Jarak antar panel diperkecil */
+    
+    /* Tinggi container diset agar mengisi sisa layar di bawah navbar */
+    height: calc(100vh - 100px);
+}
+
+/* --- Panels --- */
+.panel {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1rem; /* Padding lebih tipis */
+    box-shadow: var(--shadow-md);
+    
+    /* Agar panel memanjang penuh ke bawah */
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Scroll jika konten kepanjangan */
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.panel-header h2 {
+    font-size: 1rem; /* Font judul diperkecil */
+    color: var(--text-dark);
+}
+
+.panel-header i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* --- Camera Grid --- */
+.camera-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.camera-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.camera-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.camera-card:hover img {
+    transform: scale(1.03);
+}
+
+.status-indicator {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(220, 38, 38, 0.9);
+    color: white;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.camera-label {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+/* --- Sensor Grid --- */
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.sensor-card {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border: 1px solid #e2e8f0;
+    padding: 0.8rem; /* Padding lebih tipis */
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.sensor-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.icon-box {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.sensor-card h3 {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sensor-card .value {
+    font-size: 1.3rem; /* Angka sedikit diperkecil */
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-top: 2px;
+}
+
+/* --- Geotag (Tampilan Baru: Kotak Putih) --- */
+.geotag-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background: #ffffff;
+    border: 2px solid #e2e8f0; /* Border sedikit lebih tebal */
+    box-shadow: var(--shadow-md); /* Shadow lebih tegas */
+    
+    padding: 1.5rem; /* Padding DIPERBESAR (dari 0.8rem menjadi 1.5rem) */
+    border-radius: 16px; /* Radius sudut diperbesar sedikit */
+    margin-bottom: 1.5rem; /* Jarak bawah ditambah */
+    gap: 20px; /* Jarak antar ikon dan teks diperlebar */
+    text-align: left; /* Teks rata kiri agar lebih rapi saat besar */
+}
+
+.geotag-card i {
+    font-size: 2.5rem; /* Ukuran Ikon DIPERBESAR JAUH */
+    color: var(--primary-color);
+}
+
+.geotag-info h3 {
+    font-size: 1rem; /* Font Label 'Last Geotag' diperbesar */
+    color: var(--text-muted);
+    font-weight: 700; /* Dibuat lebih tebal */
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.geotag-info p {
+    font-weight: 800; /* Font koordinat sangat tebal */
+    font-family: 'Courier New', monospace; /* Tetap bergaya monospace */
+    font-size: 1.2rem; /* Ukuran Font Koordinat DIPERBESAR */
+    color: #000000; /* WARNA DIUBAH JADI HITAM PEKAT */
+    line-height: 1.4;
+}
+
+/* --- Mapping Section --- */
+.mapping-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Isi sisa ruang kosong */
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.controls h3 {
+    font-size: 0.9rem;
+}
+
+.toggle-buttons {
+    background: #e2e8f0;
+    padding: 4px;
+    border-radius: 25px;
+    display: flex;
+}
+
+.btn-toggle {
+    padding: 4px 15px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.btn-toggle.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* --- Map Wrapper (Compact Size) --- */
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    
+    /* Ukuran dibatasi agar tidak perlu scroll di laptop */
+    max-width: 260px; 
+    aspect-ratio: 1 / 1; 
+    
+    margin: 0 auto; /* Posisi tengah */
+    
+    /* Background Map */
+    background-image: url('berkas foto/MapA.png'); 
+    background-size: 80% 80%; 
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.map-wrapper canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 2;
+}
+
+/* --- Modal Image (Pop-up) --- */
+#imageModal {
+    display: none;
+    position: fixed; 
+    z-index: 2000;
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(5px);
+}
+
+.modal-content img {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #f1f5f9;
+    padding: 20px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: #f1f5f9;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#imageModal .modal-content {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+}
+
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+/* --- Responsive (Mobile Optimization) --- */
+@media screen and (max-width: 1024px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        height: auto; /* Biarkan scroll di tablet/hp */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .navbar {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .navbar__container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar__menu {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .dashboard-container {
+        padding: 0 1rem;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        height: auto;
+    }
+
+    .panel {
+        padding: 1rem;
+        height: auto;
+    }
+
+    .sensor-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .map-wrapper {
+        max-width: 100%; /* Map memenuhi layar HP */
+    }
+    
+    .geotag-card {
+        padding: 1rem;
+        flex-direction: column; /* Ikon di atas teks di HP */
+        text-align: center;
+        gap: 10px;
+    }
+    .geotag-card i {
+        font-size: 2rem;
+    }
+    .geotag-info p {
+        font-size: 1rem; /* Ukuran font sedikit mengecil di HP */
+    }
+}

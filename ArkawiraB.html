@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AERONAUTIKA-UB</title>
+    <link rel="stylesheet" href="styleb.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" id="navbar__logo">
+                <img src="berkas foto/Varuna.ico" alt="Logo">
+                <div class="navbar-text">
+                    <h1>NAUTIKAL BRAWIJAYA</h1>
+                    <p>Universitas Brawijaya</p>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        
+        <section class="panel camera-panel">
+            <div class="panel-header">
+                <i class="fas fa-camera"></i>
+                <h2>Monitoring</h2>
+            </div>
+            <div class="camera-grid">
+                <div class="camera-card">
+                    <img id="cam-surface" src="berkas foto/Varuna.jpg" alt="Surface View" style="cursor: pointer;">
+                    <div class="camera-label">Surface Cam</div>
+                </div>
+                <div class="camera-card">
+                    <img id="cam-underwater" src="berkas foto/Varuna.jpg" alt="Underwater View" style="cursor: pointer;">
+                    <div class="camera-label">Underwater Cam</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel data-panel">
+            <div class="panel-header">
+                <i class="fas fa-chart-line"></i>
+                <h2>Attitude Information</h2>
+            </div>
+
+            <div class="sensor-grid">
+                <div class="sensor-card">
+                    <div class="icon-box"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>SOG</h3>
+                    <p class="value" id="SOG">0.0 Knot</p>
+                </div>
+                <div class="sensor-card">
+                    <div class="icon-box"><i class="fas fa-compass"></i></div>
+                    <h3>COG</h3>
+                    <p class="value" id="COG">0&#176;</p>
+                </div>
+                <div class="sensor-card">
+                    <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Position</h3>
+                    <p class="value" id="Position">--</p>
+                </div>
+                <div class="sensor-card">
+                    <div class="icon-box"><i class="fas fa-compass"></i></div>
+                    <h3>Heading</h3>
+                    <p class="value" id="heading">0&#176;</p>
+                </div>
+                <div class="sensor-card">
+                    <div class="icon-box"><i class="fas fa-star"></i></div>
+                    <h3>Score</h3>
+                    <p class="value" id="skor">0</p>
+                </div>
+            </div>
+
+            <div class="geotag-card">
+                <i class="fas fa-satellite"></i>
+                <div class="geotag-info">
+                    <h3>Last Geotag</h3>
+                    <p id="geot">Waiting for data...</p>
+                </div>
+            </div>
+
+            <div class="mapping-container">
+                <div class="controls">
+                    <h3>Trajectory</h3>
+                    <div class="toggle-buttons">
+                        <a href="index.html" class="btn-toggle">A</a>
+                        <a href="#" class="btn-toggle active">B</a>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <canvas id="realtimePlot"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="supa.js" type="module"></script>
+</body>
+</html>
